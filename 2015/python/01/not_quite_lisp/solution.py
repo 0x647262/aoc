@@ -1,4 +1,4 @@
-'''
+"""
 --- Day 1: Not Quite Lisp ---
 
 Santa was hoping for a white Christmas, but his weather machine's "snow"
@@ -10,11 +10,11 @@ available on each day in the Advent calendar; the second puzzle is unlocked
 when you complete the first. Each puzzle grants one star. Good luck!
 
 Here's an easy puzzle to warm you up.
-'''
+"""
 
 
 def part1(instructions: str):
-    '''
+    """
     Santa is trying to deliver presents in a large apartment building, but he
     can't find the right floor - the directions he got are a little confusing.
     He starts on the ground floor (floor 0) and then follows the instructions
@@ -34,18 +34,12 @@ def part1(instructions: str):
         - ()) and ))( both result in floor -1 (the first basement level).
         - ))) and )())()) both result in floor -3.
 
-    To what floor do the instructions take Santa?  '''
-    floor = 0
-    for instruction in instructions:
-        if instruction == '(':
-            floor += 1
-        elif instruction == ')':
-            floor -= 1
-    return floor
+    To what floor do the instructions take Santa?  """
+    return abs(instructions.count("(") - instructions.count(")"))
 
 
 def part2(instructions: str):
-    '''
+    """
     --- Part Two ---
 
     Now, given the same instructions, find the position of the first character
@@ -60,23 +54,24 @@ def part2(instructions: str):
 
     What is the position of the character that causes Santa to first enter the
     basement?
-    '''
+    """
     floor = 0
     position = 0
 
     for instruction in instructions:
         position += 1
-        if instruction == '(':
+        if instruction == "(":
             floor += 1
-        elif instruction == ')':
+        elif instruction == ")":
             floor -= 1
         if floor < 0:
             break
+
     return position
 
 
 if __name__ == "__main__":
     with open("input") as FILE_INPUT:
-        INSTRUCTIONS = FILE_INPUT.read().rstrip()
-        print("Part 1:", part1(INSTRUCTIONS))
-        print("Part 2:", part2(INSTRUCTIONS))
+        INSTRUCTIONS = FILE_INPUT.read()
+        print("Day 1 Part 1:", part1(INSTRUCTIONS))
+        print("Day 1 Part 2:", part2(INSTRUCTIONS))

@@ -1,25 +1,23 @@
-#!/usr/bin/env python3
-
-'''
+"""
 --- Day 3: Perfectly Spherical Houses in a Vacuum ---
-'''
+"""
 
 
 def visited(directions: str):
-    '''
+    """
     Returns a list of houses visited given directions
-    '''
+    """
     deliveries = [[0, 0]]
     x = 0
     y = 0
     for direction in directions:
-        if direction == '^':
+        if direction == "^":
             y += 1
-        elif direction == 'v':
+        elif direction == "v":
             y -= 1
-        elif direction == '>':
+        elif direction == ">":
             x += 1
-        elif direction == '<':
+        elif direction == "<":
             x -= 1
         else:
             continue
@@ -29,9 +27,9 @@ def visited(directions: str):
 
 
 def alo(deliveries: list):
-    '''
+    """
     Returns the number of houses at which at least one present was delivered
-    '''
+    """
     delivered = []
     for delivery in deliveries:
         if delivery not in delivered:
@@ -41,7 +39,7 @@ def alo(deliveries: list):
 
 
 def part1(directions: str):
-    '''
+    """
     Santa is delivering presents to an infinite two-dimensional grid of houses.
 
     He begins by delivering a present to the house at his starting location,
@@ -62,12 +60,12 @@ def part1(directions: str):
           the house at his starting/ending location.
         - ^v^v^v^v^v delivers a bunch of presents to some very lucky children
           at only 2 houses.
-    '''
+    """
     return alo(visited(directions))
 
 
 def part2(directions: str):
-    '''
+    """
     --- Part Two ---
 
     The next year, to speed up the process, Santa creates a robot version of
@@ -88,18 +86,12 @@ def part2(directions: str):
           up back where they started.
         - ^v^v^v^v^v now delivers presents to 11 houses, with Santa going one
           direction and Robo-Santa going the other.
-    '''
+    """
     return alo(visited(directions[::2]) + visited(directions[1::2]))
 
 
-def main():
-    '''
-    Foo
-    '''
-    with open('input') as file_input:
-        directions = file_input.read()
-        print("Part 1:", part1(directions))
-        print("Part 2:", part2(directions))
-
-
-main()
+if __name__ == "__main__":
+    with open("input") as FILE_INPUT:
+        DIRECTIONS = FILE_INPUT.read()
+        print("Day 3 Part 1:", part1(DIRECTIONS))
+        print("Day 3 Part 2:", part2(DIRECTIONS))
