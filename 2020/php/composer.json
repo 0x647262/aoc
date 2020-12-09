@@ -1,0 +1,23 @@
+{
+  "require-dev": {
+    "squizlabs/php_codesniffer": "*",
+    "friendsofphp/php-cs-fixer": "*",
+    "phpmd/phpmd": "*",
+    "vimeo/psalm": "*",
+    "phpunit/phpunit": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "AoC2020\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit tests",
+    "analyze": "psalm --show-info=true"
+  }
+}
