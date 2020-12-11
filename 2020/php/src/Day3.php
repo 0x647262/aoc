@@ -13,7 +13,7 @@ namespace AoC2020;
  *
  * @package AoC2020\Day3
  */
-class Day3 extends Util
+class Day3 extends Day
 {
     /**
      * --- Part One ---
@@ -78,7 +78,9 @@ class Day3 extends Util
      * you encounter?
      *
      * @param string $input
+     *      The filename of the input to be processed.
      * @return int
+     *      Returns the number of collisions encounter while traversing $input.
      */
     public function part1(string $input): int
     {
@@ -89,15 +91,18 @@ class Day3 extends Util
 
     /**
      * @param int $deltaX
+     *      Change in the X coordinate for each movement.
      * @param int $deltaY
+     *      Change in the X coordinate for each movement.
      * @param string[] $map
+     *      The map to be traversed.
      * @return int
+     *      Returns the number of collisions encountered while traversing the slope.
      */
     private function traverse(int $deltaX, int $deltaY, array $map): int
     {
         $width = strlen($map[0]);
         $collisions = 0;
-        // TODO: Would this turn into an unreadable mess if it were converted into a call to array_reduce?
         for ($x = 0, $y = 0; $y < sizeof($map); $x = ($x + $deltaX) % $width, $y += $deltaY) {
             if ($map[$y][$x] === '#') {
                 $collisions += 1;
@@ -125,7 +130,11 @@ class Day3 extends Util
      *
      * What do you get if you multiply together the number of trees encountered on each of the listed slopes?
      * @param string $input
+     *      The filename of the input to be processed.
      * @return int
+     *      Returns the product of collisions encountered on the following slopes:
+     *
+     *      [[1,1], [3,1], [5,1], [7,1], [1,2]]
      */
     public function part2(string $input): int
     {
@@ -137,13 +146,10 @@ class Day3 extends Util
             [7, 1],
             [1, 2]
         ];
-        return array_reduce(
-            $slopes,
-            function (int $sum, array $slope) use ($map): int {
-                // Note: Idea whines that $sum being an "unused local variable", but it is most certainly not ;)
-                return $sum *= $this->traverse((int)$slope[0], (int)$slope[1], $map);
-            },
-            1
-        );
+        $product = 1;
+        foreach ($slopes as $slope) {
+            $product *= $this->traverse($slope[0], $slope[1], $map);
+        }
+        return $product;
     }
 }

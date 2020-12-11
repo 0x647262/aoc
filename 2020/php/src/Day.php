@@ -9,11 +9,13 @@ namespace AoC2020;
  *
  * @package AoC2020
  */
-class Util
+class Day
 {
     /**
      * @param string $filename
+     *      Name of the file to be read.
      * @return string[]
+     *      Returns an array of strings extracted from $filename.
      */
     public function returnInputAsAnArrayOfStrings(string $filename): array
     {
@@ -31,12 +33,16 @@ class Util
 
     /**
      * @param string $filename
-     *
-     * @return \Generator
+     *      Name of the file to be read.
+     * @return \Traversable<string>
+     *     Yields one line of the file (as a string) at a time.
      */
-    public function readInput(string $filename): \Generator
+    private function readInput(string $filename): \Traversable
     {
         $file = fopen($filename, 'r');
+        if ($file === false) {
+            return;
+        }
 
         while ($line = fgets($file)) {
             yield $line;
@@ -47,7 +53,9 @@ class Util
 
     /**
      * @param string $filename
+     *      Name of the file to be read.
      * @return int[]
+     *      Returns an array of integers extracted from $filename.
      */
     public function returnInputAsAnArrayOfIntegers(string $filename): array
     {

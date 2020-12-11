@@ -15,12 +15,12 @@ namespace AoC2020;
  *
  * @package AoC2020
  */
-class Day2 extends Util
+class Day2 extends Day
 {
     /*
      * Notes:
      *     * Psalm is unable to infer the type of these constants, so we cast them to make Psalm happy
-     *     * Idea (again) thinks these constants are unused...
+     *     * Idea thinks these constants are unused... Weird...
      */
 
     /**
@@ -84,7 +84,9 @@ class Day2 extends Util
      * How many passwords are valid according to their policies?
      *
      * @param string $input
+     *      The name of the file to be processed.
      * @return int
+     *      Returns the number of valid passwords contained in $input.
      */
     public function part1(string $input): int
     {
@@ -110,9 +112,23 @@ class Day2 extends Util
     }
 
     /**
-     * TODO: DOCUMENT ME!
+     * Splits a password rule entry into 4 parts:
+     *
      * @param string $entry
+     *      An entry in the form of:
+     *
+     *          1-2 a: abcde
+     *
+     *      To be split
      * @return string[]
+     *      The split entry in the form:
+     *
+     *      [
+     *          integer,
+     *          integer,
+     *          string,
+     *          string
+     *      ]
      */
     private function splitEntry(string $entry): array
     {
@@ -126,12 +142,18 @@ class Day2 extends Util
     }
 
     /**
-     * TODO: DOCUMENT ME!
+     * Validates a password according to the shopkeepers policy.
+     *
      * @param int $min
+     *      The minimum number of times the string $letter can occur in the password
      * @param int $max
+     *      The maximum number of times the string $letter can occur in the password
      * @param string $letter
+     *      The letter to be tested using $min and $max.
      * @param string $password
+     *      The password to be verified.
      * @return bool
+     *      Returns true for a successful password validation, and false on failure.
      */
     private function validateEntry(int $min, int $max, string $letter, string $password): bool
     {
@@ -163,7 +185,9 @@ class Day2 extends Util
      * How many passwords are valid according to the new interpretation of the policies?
      *
      * @param string $input
+     *      The filename of the input to be processed.
      * @return int
+     *      Returns the number of valid passwords contained in $input.
      */
     public function part2(string $input): int
     {
@@ -189,12 +213,18 @@ class Day2 extends Util
     }
 
     /**
-     * TODO: DOCUMENT ME!
+     * Validates a password according to corporate policy.
+     *
      * @param int $firstIndex
+     *      The first index of $password to be checked for $letter.
      * @param int $secondIndex
+     *      The second index of $password to be checked for $letter.
      * @param string $letter
+     *      The letter to be checked for by $firstIndex and $secondIndex.
      * @param string $password
+     *      The password to be verified.
      * @return bool
+     *      Returns true for a successful password validation, and false on failure.
      */
     private function validateCorporateEntry(int $firstIndex, int $secondIndex, string $letter, string $password): bool
     {

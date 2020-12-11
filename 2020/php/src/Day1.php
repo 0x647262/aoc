@@ -22,7 +22,7 @@ namespace AoC2020;
  *
  * @package AoC2020
  */
-class Day1 extends Util
+class Day1 extends Day
 {
     /**
      * --- Part One ---
@@ -49,7 +49,9 @@ class Day1 extends Util
      * multiply them together?
      *
      * @param string $input
+     *      The filename of the input to be processed.
      * @return int|null
+     *      Returns the product of the two entries whose sum is 2020 on success, and null on failure.
      */
     public function part1(string $input): ?int
     {
@@ -58,11 +60,12 @@ class Day1 extends Util
     }
 
     /**
-     * Traverses an array of integers, attempting to find a pair of elements whose sum is 2020. Returns null on
-     * failure.
+     * Traverses an array of integers, attempting to find a pair of elements whose sum is 2020.
      *
      * @param array<int> $report
+     *      The report (array of integers) to be processed.
      * @return int|null
+     *      returns the product of the two entries whose sum is 2020 on success, and null on failure.
      */
     private function findTwo(array $report): ?int
     {
@@ -91,7 +94,9 @@ class Day1 extends Util
      * In your expense report, what is the product of the three entries that sum to 2020?
      *
      * @param string $input
+     *      The filename of the input to be processed.
      * @return int|null
+     *      Returns the product of the three entries whose sum is 2020.
      */
     public function part2(string $input): ?int
     {
@@ -100,22 +105,26 @@ class Day1 extends Util
     }
 
     /**
-     * Traverses an array of integers, attempting to find a trio of elements whose sum is 2020. Returns null on failure.
+     * Traverses an array of integers, attempting to find a trio of elements whose sum is 2020.
+     *
      * @param array<int> $report
+     *      The report (array of integers) to be processed.
      * @return int|null
+     *      Returns the product of the three entries whose sum is 2020.
      */
     private function findThree(array $report): ?int
     {
         do {
             $first_entry = array_pop($report);
-            foreach ($report as $second_entry) {
-                // TODO Can we pop (using a temporary array) one more time to make this function more efficient?
-                foreach ($report as $third_entry) {
+            $popped_report = $report;
+            do {
+                $second_entry = array_pop($popped_report);
+                foreach ($popped_report as $third_entry) {
                     if ($first_entry + $second_entry + $third_entry === 2020) {
                         return $first_entry * $second_entry * $third_entry;
                     }
                 }
-            }
+            } while (!empty($popped_report));
         } while (!empty($report));
 
         return null;

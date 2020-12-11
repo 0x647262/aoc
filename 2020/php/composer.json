@@ -4,7 +4,9 @@
     "friendsofphp/php-cs-fixer": "*",
     "phpmd/phpmd": "*",
     "vimeo/psalm": "*",
-    "phpunit/phpunit": "*"
+    "phpunit/phpunit": "*",
+    "phan/phan": "*",
+    "phpstan/phpstan": "^0.12.59"
   },
   "autoload": {
     "psr-4": {
@@ -18,6 +20,10 @@
   },
   "scripts": {
     "test": "phpunit tests",
-    "analyze": "psalm --show-info=true"
+    "analyze": [
+      "phan --allow-polyfill-parser",
+      "phpstan analyze src --level 8",
+      "psalm --show-info=true"
+    ]
   }
 }
