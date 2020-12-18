@@ -11,7 +11,8 @@ namespace AoC2020;
  * it's certainly not safe: there's very minimal steering and the area is covered in trees. You'll need to see which
  * angles will take you near the fewest trees.
  *
- * @package AoC2020\Day3
+ * Class Day3
+ * @package AoC2020
  */
 class Day3 extends Day
 {

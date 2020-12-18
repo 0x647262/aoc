@@ -20,6 +20,7 @@ namespace AoC2020;
  * Collect stars by solving puzzles. Two puzzles will be made available on each day in the Advent calendar; the second
  * puzzle is unlocked when you complete the first. Each puzzle grants one star. Good luck!
  *
+ * Class Day1
  * @package AoC2020
  */
 class Day1 extends Day
@@ -73,7 +74,7 @@ class Day1 extends Day
             $first_entry = array_pop($report);
             foreach ($report as $second_entry) {
                 if ($first_entry + $second_entry === 2020) {
-                    return $first_entry * $second_entry;
+                    return intval($first_entry * $second_entry);
                 }
             }
         } while (!empty($report));
@@ -121,7 +122,7 @@ class Day1 extends Day
                 $second_entry = array_pop($popped_report);
                 foreach ($popped_report as $third_entry) {
                     if ($first_entry + $second_entry + $third_entry === 2020) {
-                        return $first_entry * $second_entry * $third_entry;
+                        return intval($first_entry * $second_entry * $third_entry);
                     }
                 }
             } while (!empty($popped_report));

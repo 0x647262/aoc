@@ -17,7 +17,8 @@ namespace AoC2020;
  * Due to some questionable network security, you realize you might be able to solve both of these problems at the same
  * time.
  *
- * @package AoC2020\Day4
+ * Class Day4
+ * @package AoC2020
  */
 class Day4 extends Day
 {

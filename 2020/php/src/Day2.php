@@ -13,6 +13,7 @@ namespace AoC2020;
  * The shopkeeper at the North Pole Toboggan Rental Shop is having a bad day. "Something's wrong with our computers; we
  * can't log in!" You ask if you can take a look.
  *
+ * Class Day2
  * @package AoC2020
  */
 class Day2 extends Day

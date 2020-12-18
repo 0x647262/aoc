@@ -39,7 +39,7 @@ final class Day4Test extends TestCase
         );
     }
 
-    /** @covers Day4::part1 */
+    /** @covers Day4::part2 */
     public function testRealInputPart2(): void
     {
         Day4Test::assertEquals(

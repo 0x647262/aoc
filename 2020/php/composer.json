@@ -6,7 +6,7 @@
     "vimeo/psalm": "*",
     "phpunit/phpunit": "*",
     "phan/phan": "*",
-    "phpstan/phpstan": "^0.12.59"
+    "phpstan/phpstan": "*"
   },
   "autoload": {
     "psr-4": {
@@ -18,10 +18,11 @@
       "Tests\\": "tests/"
     }
   },
+  "prefer-stable": true,
   "scripts": {
     "test": "phpunit tests",
     "analyze": [
-      "phan --allow-polyfill-parser",
+      "PHAN_DISABLE_XDEBUG_WARN=1 phan --allow-polyfill-parser",
       "phpstan analyze src --level 8",
       "psalm --show-info=true"
     ],

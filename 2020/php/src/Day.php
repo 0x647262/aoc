@@ -22,7 +22,7 @@ class Day
         return array_map(
             function (string $element) {
                 return trim(
-                    strval($element)
+                    $element
                 );
             },
             iterator_to_array(
