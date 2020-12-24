@@ -26,6 +26,6 @@
       "phpstan analyze src --level 8",
       "psalm --show-info=true"
     ],
-    "solve": "php aoc2020.php"
+    "solve": "php bin/solve.php"
   }
 }
