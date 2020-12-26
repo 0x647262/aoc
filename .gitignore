@@ -1,1 +1,6 @@
 **/__pycache__
+**/.idea/
+**/.php_cs.cache
+**/.phpunit.cache
+**/untitled.iml
+**/vendor/
