@@ -8,11 +8,11 @@ use AoC2020\Day6;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class Day4Test
+ * Class Day6Test
  */
 final class Day6Test extends TestCase
 {
-    /** @covers Day4::part1 */
+    /** @covers Day6::part1 */
     public function testExampleInputPart1(): void
     {
         Day6Test::assertEquals(
@@ -30,7 +30,7 @@ final class Day6Test extends TestCase
         );
     }
 
-    /** @covers Day4::part2 */
+    /** @covers Day6::part2 */
     public function testExampleInputPart2(): void
     {
         Day6Test::assertEquals(

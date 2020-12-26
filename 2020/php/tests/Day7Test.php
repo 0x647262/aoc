@@ -19,6 +19,10 @@ final class Day7Test extends TestCase
             4,
             (new Day7())->part1(__DIR__ . '/inputs/day_07_example_input_part1.txt')
         );
+        Day7Test::assertEquals(
+            0,
+            (new Day7())->part1(__DIR__ . '/inputs/day_07_example_input_part2.txt')
+        );
     }
 
     /** @covers Day7::part1 */
